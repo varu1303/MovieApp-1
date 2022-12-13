@@ -16,7 +16,7 @@ class MovieCard extends React.Component {
         console.log("Added")
                 
     }
-  render(props){
+  render(){
     const {Title,Poster,Plot,imdbRating} = this.props.movie;
     //console.log(movie)
     return(
