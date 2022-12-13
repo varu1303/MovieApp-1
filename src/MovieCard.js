@@ -1,8 +1,23 @@
 import React from "react";
 
 class MovieCard extends React.Component {
+    constructor(){
+        super();
+        this.state = {
+            qty:0
+        }
+
+    }
+
+    addLikes() {
+
+        this.state.qty += this.state.qty
+
+        console.log("Added")
+                
+    }
   render(props){
-    const {Title,Poster,Plot,imdbrating} = this.props.movie;
+    const {Title,Poster,Plot,imdbRating} = this.props.movie;
     //console.log(movie)
     return(
       <>
@@ -15,8 +30,8 @@ class MovieCard extends React.Component {
           <div className="title">{Title}</div>
           <div className="plot">{Plot}</div>
           <div className="footer">
-          <div className='rating'>{imdbrating}</div>
-            <button className="favourite-btn">Favorite</button>
+          <div className='rating'>{imdbRating}</div>
+            <button className="favourite-btn" onClick={this.addLikes}>like</button>
           </div>
         </div>
       </div>
