@@ -47,14 +47,13 @@ class App extends Component {
   };
 
   handleAddToCart = (movie) => {
-    console.log("sdfsdfsd");
     this.setState((prev) => ({ cartItems: [...prev.cartItems, movie] }));
   };
   handleRemoveFromCart = (movie) => {
     const updatedCartItems = this.state.cartItems.filter(
       (item) => item.id !== movie.id
     );
-    this.setState((prev) => ({ cartItems: updatedCartItems }));
+    this.setState({ cartItems: updatedCartItems });
   };
   getTotal = () => {
     let total = 0;

@@ -7,18 +7,23 @@ class Navbar extends Component {
     this.state = { showCartList: false };
   }
 
-  handleShowCartList = () => {
+  toggleCartList = () => {
     this.setState({ showCartList: !this.state.showCartList });
   };
+
   render() {
     const { cartItems, onResetCart } = this.props;
 
     return (
       <div style={styles.nav}>
         {this.state.showCartList && (
-          <CartList items={cartItems} onReset={onResetCart} />
+          <CartList
+            items={cartItems}
+            onReset={onResetCart}
+            toggleCartList={this.toggleCartList}
+          />
         )}
-        <div style={styles.cartIconContainer} onClick={this.handleShowCartList}>
+        <div style={styles.cartIconContainer} onClick={this.toggleCartList}>
           <img
             style={styles.cartIcon}
             src="https://cdn-icons-png.flaticon.com/128/891/891462.png"

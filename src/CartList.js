@@ -2,7 +2,12 @@ import React from "react";
 
 class CartList extends React.Component {
   render() {
-    const { items, onReset } = this.props;
+    const { items, onReset, toggleCartList } = this.props;
+
+    const handleReset = () => {
+      onReset();
+      toggleCartList();
+    };
     return (
       <div className="cart-list">
         <span>Movies Count: {items.length}</span>
@@ -17,7 +22,7 @@ class CartList extends React.Component {
             </div>
           </div>
         ))}
-        <button onClick={onReset}>Reset Cart</button>
+        <button onClick={handleReset}>Reset Cart</button>
       </div>
     );
   }

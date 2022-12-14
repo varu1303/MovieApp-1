@@ -59,7 +59,9 @@ class MovieCard extends React.Component {
                 </button>
 
                 <button
-                  className="cart-btn"
+                  className={
+                    !this.props.isInCart ? "cart-btn add" : "cart-btn remove"
+                  }
                   onClick={() => this.handleCartButton(this.props.movie)}
                 >
                   {!this.props.isInCart ? "Add to Cart" : "Remove from Cart"}
