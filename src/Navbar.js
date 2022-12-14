@@ -1,40 +1,62 @@
-import React from 'react';
+import React, { Component } from "react";
+import CartList from "./CartList";
 
-const Navbar = (props) => {
-  return (
-    <div style={styles.nav}>
-      <div style={styles.cartIconContainer}>
-        <img style={styles.cartIcon} src="https://cdn-icons-png.flaticon.com/128/891/891462.png" alt="cart-icon" />
-        <span style={styles.cartCount}>3</span>
+class Navbar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { showCartList: false };
+  }
+
+  handleShowCartList = () => {
+    this.setState({ showCartList: !this.state.showCartList });
+  };
+  render() {
+    const { cartItems, onResetCart } = this.props;
+
+    return (
+      <div style={styles.nav}>
+        {this.state.showCartList && (
+          <CartList items={cartItems} onReset={onResetCart} />
+        )}
+        <div style={styles.cartIconContainer} onClick={this.handleShowCartList}>
+          <img
+            style={styles.cartIcon}
+            src="https://cdn-icons-png.flaticon.com/128/891/891462.png"
+            alt="cart-icon"
+          />
+          <span style={styles.cartCount}>{cartItems.length}</span>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 const styles = {
   cartIcon: {
-    height: 32,
-    marginRight: 20
+    height: 48,
+    marginRight: 20,
   },
   nav: {
     height: 70,
-    background: '#4267b2',
-    display: 'flex',
-    justifyContent: 'flex-end',
-    alignItems: 'center'
+    background: "#4267b2",
+    display: "flex",
+    justifyContent: "flex-end",
+    alignItems: "center",
+    position: "relative",
   },
   cartIconContainer: {
-    position: 'relative'
+    position: "relative",
+    cursor: "pointer",
   },
   cartCount: {
-    background: 'orange',
-    borderRadius: '50%',
-    padding: '4px 8px',
-    position: 'absolute',
+    background: "orange",
+    borderRadius: "50%",
+    padding: "4px 8px",
+    position: "absolute",
     right: 10,
-    top: -9
-  }
+    top: -5,
+    fontSize: 12,
+  },
 };
-
 
 export default Navbar;
